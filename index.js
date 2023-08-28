@@ -1,6 +1,7 @@
 // import redux from 'redux' if this was a react application
 const redux = require('redux')
 const createStore = redux.createStore
+const binActionCreators = redux.bindActionCreators
 
 const CAKE_ORDERED = 'CAKE_ORDERED'
 const CAKE_RESTOCKED = 'CAKE_RESTOCKED'
@@ -51,9 +52,16 @@ const reducer = (state = initialState, action) => {
 //     type: CAKE_ORDERED,
 //     quantity: 1,
 // }) --> accepts an action as a parameter
- store.dispatch(orderCake())
- store.dispatch(orderCake())
- store.dispatch(orderCake())
- store.dispatch(restockCake(3))
+
+//  store.dispatch(orderCake())
+//  store.dispatch(orderCake())
+//  store.dispatch(orderCake())
+//  store.dispatch(restockCake(3))
+
+const actions = binActionCreators({ orderCake, restockCake}, store.dispatch)
+actions.orderCake()
+actions.orderCake()
+actions.orderCake()
+actions.restockCake(3)
  
  unsubscribe()
