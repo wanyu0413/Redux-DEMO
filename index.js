@@ -31,3 +31,16 @@ const reducer = (state = initialState, action) => {
 
  const store = createStore(reducer)
  console.log('Initial state', store.getState())
+
+ const unsubscribe = store.subscribe(() =>  console.log('update state', store.getState()))
+
+//  store.dispatch({
+//     type: CAKE_ORDERED,
+//     quantity: 1,
+// }) --> accepts an action as a parameter
+ store.dispatch(orderCake())
+ store.dispatch(orderCake())
+ store.dispatch(orderCake())
+ 
+ unsubscribe()
+ store.dispatch(orderCake())
