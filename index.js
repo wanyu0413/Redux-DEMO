@@ -1,3 +1,7 @@
+// import redux from 'redux' if this was a react application
+const redux = require('redux')
+const createStore = redux.createStore
+
 const CAKE_ORDERED = "CAKE_ORDERED"
 
 function orderCake(){
@@ -24,3 +28,6 @@ const reducer = (state = initialState, action) => {
             return state
     }
  }
+
+ const store = createStore(reducer)
+ console.log('Initial state', store.getState())
