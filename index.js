@@ -7,5 +7,20 @@ function orderCake(){
     }
 }
 
+const initialState = {
+    numOfCakes: 10
+}
+
 // (previousState, action) => newState
 
+const reducer = (state = initialState, action) => {
+    switch(action.type) {
+        case CAKE_ORDERED:
+            return {
+                ...state,
+                numOfCakes: state.numOfCakes - 1,
+            }
+        default:
+            return state
+    }
+ }
