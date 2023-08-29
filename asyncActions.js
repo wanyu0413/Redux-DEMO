@@ -1,5 +1,8 @@
 const redux = require('redux')
+const thunkMiddleware = require('redux-thunk').default
+const axiox = require('axios')
 const createStore = redux.createStore
+const applyMiddleware = redux.applyMiddleware
 
 const initialState = {
     loading: false,
@@ -53,4 +56,11 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-const store = createStore(reducer)
+// --thunk middleware brings the ability for an action creator to return a function instead of an action object.
+const fetchUsers = () => {
+    return function (dispatch) {
+
+    }
+}
+
+const store = createStore(reducer, applyMiddleware(thunkMiddleware))
