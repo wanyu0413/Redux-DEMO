@@ -111,9 +111,19 @@ const rootReducer = combineReducers({
 
 const actions = binActionCreators({ orderCake, restockCake, orderIceCream, restockIceCream}, store.dispatch)
 actions.orderCake()
+// ====== with Middleware ======
+// action CAKE_ORDERED @ 10:38:09.180
+//    prev state { cake: { numOfCakes: 10 }, iceCream: { numOfIceCreams: 20 } }
+//    action     { type: 'CAKE_ORDERED', payload: 1 }
+//    next state { cake: { numOfCakes: 9 }, iceCream: { numOfIceCreams: 20 } }
 actions.orderCake()
 actions.orderCake()
 actions.restockCake(3)
+// ====== with Middleware ======
+// action CAKE_RESTOCKED @ 10:38:09.187
+//    prev state { cake: { numOfCakes: 7 }, iceCream: { numOfIceCreams: 20 } }
+//    action     { type: 'CAKE_RESTOCKED', payload: 3 }
+//    next state { cake: { numOfCakes: 10 }, iceCream: { numOfIceCreams: 20 } }
 actions.orderIceCream()
 actions.orderIceCream()
 actions.restockIceCream(2)
